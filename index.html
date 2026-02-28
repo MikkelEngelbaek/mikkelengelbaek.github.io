@@ -177,7 +177,7 @@ body {
 }
 .home-section-title em { color: var(--orange); font-style: italic; }
 
-.skills-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 72px; }
+.skills-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 72px; align-items: start;  }
 .sg-name {
   font-family: var(--fm); font-size: 0.6rem; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--orange);
@@ -336,29 +336,28 @@ body {
 
     <!-- Skills -->
     <h2 class="home-section-title">My <em>Toolkit</em></h2>
+<p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 32px; margin-top: -8px; font-style: italic;">Self-assessed — scores reflect a combination of academic grades, project experience, and comparison to professional standards.</p>
     <div class="skills-cols">
       <div>
         <div class="sg-name">Finance</div>
-        <div class="sk"><span class="sk-name">Financial Modelling</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
-        <div class="sk"><span class="sk-name">Valuation (DCF, Comps)</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
-        <div class="sk"><span class="sk-name">FP&amp;A / Budgeting</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
-        <div class="sk"><span class="sk-name">M&amp;A Due Diligence</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
-        <div class="sk"><span class="sk-name">Equity Research</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Portfolio Theory</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Derivatives & Option Pricing</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Risk Management</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Algorithmic/Pairs trading</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
       </div>
       <div>
         <div class="sg-name">Software</div>
-        <div class="sk"><span class="sk-name">Excel / VBA</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
-        <div class="sk"><span class="sk-name">Power BI</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
-        <div class="sk"><span class="sk-name">Bloomberg Terminal</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
-        <div class="sk"><span class="sk-name">Python (pandas)</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
-        <div class="sk"><span class="sk-name">SQL</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Python <span style="font-size: 0.5em; color: var(--muted);">(AI-assisted)</span></span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">R     <span style="font-size: 0.5em; color: var(--muted);">(AI-assisted)</span></span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Excel</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">LaTex</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
       </div>
       <div>
-        <div class="sg-name">Languages</div>
-        <div class="sk"><span class="sk-name">Danish</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
-        <div class="sk"><span class="sk-name">English</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
-        <div class="sk"><span class="sk-name">German</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
-        <div class="sk"><span class="sk-name">Italian</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div class="sg-name">Mathematics</div>
+        <div class="sk"><span class="sk-name">Probability</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Linear Algebra</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Statistics</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Optimization</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
       </div>
     </div>
 
@@ -366,10 +365,10 @@ body {
     <h2 class="home-section-title">Get in <em>Touch</em></h2>
     <div class="contact-block">
       <div class="c-lines">
-        <div class="c-line"><span class="c-lbl">Email</span><span class="c-val">Mikkel@example.com</span></div>
-        <div class="c-line"><span class="c-lbl">LinkedIn</span><span class="c-val">linkedin.com/in/MikkelEngelbæk</span></div>
+        <div class="c-line"><span class="c-lbl">Email</span><span class="c-val">mikkel.engelbaek@gmail.com</span></div>
+        <div class="c-line"><span class="c-lbl">LinkedIn</span><span class="c-val"><a href="https://linkedin.com/in/mikkelengelbaek" target="_blank" style="color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--border);">linkedin.com/in/mikkelengelbaek</a></span></div>
         <div class="c-line"><span class="c-lbl">Location</span><span class="c-val">Aarhus, Denmark</span></div>
-        <div class="c-line"><span class="c-lbl">Open to</span><span class="c-val">Full-time · Freelance · Advisory</span></div>
+        <div class="c-line"><span class="c-lbl">Open to</span><span class="c-val">Full-time · Part-time</span></div>
       </div>
     </div>
 
