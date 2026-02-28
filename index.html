@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikkel Engelbæk — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #ddddd9;
+  --card:    #f0efeb;
+  --white:   #f7f6f2;
+  --navy:    #0d1f3c;
+  --orange:  #e8520a;
+  --text:    #0d1f3c;
+  --muted:   #8a8782;
+  --border:  #cccbc6;
+  --fh: 'Fraunces', serif;
+  --fb: 'DM Sans', sans-serif;
+  --fm: 'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--fb);
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--fh); font-size: 1rem; font-weight: 700;
+  color: var(--navy);
+}
+.nav-logo span { color: var(--orange); }
+.nav-status {
+  font-family: var(--fm); font-size: 0.6rem; color: var(--muted);
+  display: flex; align-items: center; gap: 7px;
+}
+.nav-status::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: #10b981; flex-shrink: 0;
+}
+
+/* ── BACK ── */
+.back {
+  display: none; position: fixed; top: 64px; left: 56px; z-index: 300;
+  font-family: var(--fb); font-size: 0.88rem; font-weight: 500;
+  color: var(--navy);
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 999px; padding: 8px 18px;
+  cursor: pointer;
+  align-items: center; gap: 6px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.back:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.back.on { display: flex; }
+
+/* ── PAGES ── */
+.page {
+  display: none; position: fixed; inset: 0;
+  padding-top: 52px; overflow-y: auto;
+  background: var(--bg);
+}
+.page.active { display: block; animation: up 0.28s ease both; }
+@keyframes up { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+
+/* ══════════════════════════════
+   HOME (scrolling)
+══════════════════════════════ */
+#home { display: block; }
+#home .wrap {
+  max-width: 780px; margin: 0 auto;
+  padding: 72px 56px 96px;
+}
+
+/* Hero */
+.hero-label {
+  font-family: var(--fm); font-size: 0.62rem;
+  color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 24px; display: block;
+}
+.hero-name {
+  font-family: var(--fh);
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 900; line-height: 0.93;
+  color: var(--navy); margin-bottom: 18px;
+}
+.hero-name em { color: var(--orange); font-style: italic; }
+.hero-role {
+  font-family: var(--fh);
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-weight: 400; font-style: italic;
+  color: var(--muted);
+}
+
+/* Divider */
+.divider { width: 36px; height: 2px; background: var(--orange); margin: 48px 0; }
+
+/* About text */
+.about-text {
+  max-width: 580px; margin-bottom: 56px;
+}
+.about-text p {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: #4e4c49; margin-bottom: 14px;
+}
+.about-text p:first-child { font-size: 1.05rem; color: var(--text); font-weight: 400; }
+
+/* Stat boxes */
+.stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; margin-bottom: 48px;
+}
+.stat {
+  background: var(--navy); border-radius: 12px;
+  padding: 24px 20px; text-align: center;
+}
+.stat-num {
+  font-family: var(--fh); font-size: 2.2rem; font-weight: 900;
+  color: var(--orange); line-height: 1;
+}
+.stat-lbl {
+  font-family: var(--fm); font-size: 0.55rem;
+  color: rgba(255,255,255,0.4); letter-spacing: 0.14em;
+  text-transform: uppercase; margin-top: 6px;
+}
+
+/* Section boxes */
+.boxes-label {
+  font-family: var(--fm); font-size: 0.6rem;
+  color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 14px; display: block;
+}
+.boxes { display: flex; flex-direction: column; gap: 8px; margin-bottom: 72px; }
+.box {
+  background: var(--white); border-radius: 12px;
+  padding: 20px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; border: 1px solid transparent;
+  transition: background 0.2s, transform 0.18s, border-color 0.2s;
+}
+.box:hover { background: var(--navy); transform: translateY(-2px); }
+.box:hover .box-title { color: #fff; }
+.box:hover .box-num { color: rgba(255,255,255,0.3); }
+.box:hover .box-arr { color: var(--orange); transform: translateX(3px); }
+.box-left { display: flex; align-items: center; gap: 16px; }
+.box-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--card); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.box:hover .box-icon { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.1); }
+.box-num { font-family: var(--fm); font-size: 0.58rem; color: var(--muted); margin-bottom: 2px; transition: color 0.2s; }
+.box-title { font-size: 0.97rem; font-weight: 500; color: var(--navy); transition: color 0.2s; }
+.box-arr { color: var(--muted); font-size: 1rem; transition: color 0.2s, transform 0.2s; }
+
+/* ── SKILLS (inline on homepage) ── */
+.home-section-title {
+  font-family: var(--fh); font-size: 1.8rem; font-weight: 900;
+  color: var(--navy); margin-bottom: 32px;
+}
+.home-section-title em { color: var(--orange); font-style: italic; }
+
+.skills-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 72px; }
+.sg-name {
+  font-family: var(--fm); font-size: 0.6rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.sk { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); }
+.sk-name { font-size: 0.88rem; color: var(--text); }
+.pips { display: flex; gap: 5px; }
+.pip { width: 9px; height: 9px; border-radius: 50%; background: var(--border); }
+.pip.on { background: var(--navy); }
+
+/* ── CONTACT (inline on homepage) ── */
+.contact-block { padding-top: 0; }
+.c-lines { display: flex; flex-direction: column; }
+.c-line { display: flex; gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.c-lbl { font-family: var(--fm); font-size: 0.6rem; color: var(--muted); min-width: 80px; letter-spacing: 0.1em; text-transform: uppercase; }
+.c-val { font-size: 0.95rem; color: var(--text); }
+
+/* ══════════════════════════════
+   INNER PAGES
+══════════════════════════════ */
+.wrap {
+  max-width: 780px; margin: 0 auto;
+  padding: 108px 56px 80px;
+}
+
+.ph { margin-bottom: 48px; }
+.ph-lbl {
+  font-family: var(--fm); font-size: 0.6rem;
+  color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 10px; display: block;
+}
+.ph-title {
+  font-family: var(--fh); font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900; color: var(--navy); line-height: 1;
+}
+.ph-title em { color: var(--orange); font-style: italic; }
+
+/* Experience */
+.exp { padding: 32px 0; border-bottom: 1px solid var(--border); }
+.exp:last-child { border: none; }
+.exp-meta { display: flex; gap: 14px; align-items: baseline; margin-bottom: 10px; }
+.exp-date { font-family: var(--fm); font-size: 0.62rem; color: var(--orange); }
+.exp-co { font-family: var(--fm); font-size: 0.62rem; color: var(--muted); }
+.exp-role { font-family: var(--fh); font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.exp-desc { font-size: 0.93rem; font-weight: 300; line-height: 1.85; color: #4e4c49; margin-bottom: 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag { font-family: var(--fm); font-size: 0.58rem; padding: 4px 12px; border-radius: 999px; background: var(--white); color: var(--muted); }
+.tag.o { color: var(--orange); background: rgba(232,82,10,0.08); }
+.tag.n { color: var(--navy); background: rgba(13,31,60,0.07); }
+
+/* Education */
+.edu-list { display: flex; flex-direction: column; gap: 10px; }
+.edu-card {
+  background: var(--white); border-radius: 12px; padding: 26px 28px;
+  border-left: 3px solid var(--border);
+  transition: border-left-color 0.2s;
+}
+.edu-card:hover { border-left-color: var(--orange); }
+.edu-degree { font-family: var(--fh); font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.edu-school { font-family: var(--fm); font-size: 0.63rem; color: var(--orange); margin-bottom: 3px; }
+.edu-year { font-family: var(--fm); font-size: 0.6rem; color: var(--muted); margin-bottom: 12px; }
+.edu-detail { font-size: 0.9rem; font-weight: 300; line-height: 1.75; color: #4e4c49; }
+
+/* Projects */
+.proj-list { display: flex; flex-direction: column; gap: 10px; }
+.pc {
+  background: var(--white); border-radius: 12px; padding: 26px 28px;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pc:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+.pc-cat { font-family: var(--fm); font-size: 0.6rem; color: var(--orange); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 7px; }
+.pc-title { font-family: var(--fh); font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+.pc-desc { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: #4e4c49; }
+.pc-link { font-family: var(--fm); font-size: 0.6rem; text-transform: uppercase; color: var(--orange); text-decoration: none; white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
+.pc-link:hover { text-decoration: underline; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* responsive */
+@media (max-width: 680px) {
+  .nav, .back { padding-left: 24px; padding-right: 24px; }
+  .nav { padding: 0 24px; }
+  .back { left: 24px; }
+  #home .wrap, .wrap { padding: 56px 24px 80px; }
+  .stats, .skills-cols { grid-template-columns: 1fr; }
+  .pc { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo"><span>.</span>Mikkel Engelbæk</div>
+  <div class="nav-status">Open to opportunities</div>
+</nav>
+
+<button class="back" id="back" onclick="go('home')">← Back to overview</button>
+
+<!-- ══════════════════════════════
+     HOME
+══════════════════════════════ -->
+<div class="page active" id="home">
+  <div class="wrap">
+
+    <!-- Hero -->
+    <span class="hero-label">Portfolio · 2026</span>
+    <h1 class="hero-name"><em>.</em>Mikkel<br>Engelbæk</h1>
+    <p class="hero-role">BSc. Mathematics &amp; Economics, Aarhus University</p>
+
+    <div class="divider"></div>
+
+    <!-- About -->
+    <div class="about-text">
+      <p>Student with a genuine passion for the intersection of data, strategy, and quantitative trading.</p>
+      <p>Almost three years of learning across mathematics, modelling, and statistics — ability to translate complex problems into simpler solutions.</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl">Years of Learning Exp.</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Countries studied in</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Competitive Mindset</div></div>
+    </div>
+
+    <!-- Section boxes -->
+    <span class="boxes-label">Explore Sections</span>
+    <div class="boxes">
+      <div class="box" onclick="go('experience')">
+        <div class="box-left">
+          <div class="box-icon">💼</div>
+          <div><div class="box-num">#01</div><div class="box-title">Experience</div></div>
+        </div>
+        <span class="box-arr">→</span>
+      </div>
+      <div class="box" onclick="go('education')">
+        <div class="box-left">
+          <div class="box-icon">🎓</div>
+          <div><div class="box-num">#02</div><div class="box-title">Education</div></div>
+        </div>
+        <span class="box-arr">→</span>
+      </div>
+      <div class="box" onclick="go('projects')">
+        <div class="box-left">
+          <div class="box-icon">📐</div>
+          <div><div class="box-num">#03</div><div class="box-title">Projects</div></div>
+        </div>
+        <span class="box-arr">→</span>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <h2 class="home-section-title">My <em>Toolkit</em></h2>
+    <div class="skills-cols">
+      <div>
+        <div class="sg-name">Finance</div>
+        <div class="sk"><span class="sk-name">Financial Modelling</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
+        <div class="sk"><span class="sk-name">Valuation (DCF, Comps)</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
+        <div class="sk"><span class="sk-name">FP&amp;A / Budgeting</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">M&amp;A Due Diligence</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Equity Research</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+      </div>
+      <div>
+        <div class="sg-name">Software</div>
+        <div class="sk"><span class="sk-name">Excel / VBA</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
+        <div class="sk"><span class="sk-name">Power BI</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Bloomberg Terminal</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Python (pandas)</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">SQL</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+      </div>
+      <div>
+        <div class="sg-name">Languages</div>
+        <div class="sk"><span class="sk-name">Danish</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
+        <div class="sk"><span class="sk-name">English</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
+        <div class="sk"><span class="sk-name">German</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+        <div class="sk"><span class="sk-name">Italian</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div></div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <h2 class="home-section-title">Get in <em>Touch</em></h2>
+    <div class="contact-block">
+      <div class="c-lines">
+        <div class="c-line"><span class="c-lbl">Email</span><span class="c-val">Mikkel@example.com</span></div>
+        <div class="c-line"><span class="c-lbl">LinkedIn</span><span class="c-val">linkedin.com/in/MikkelEngelbæk</span></div>
+        <div class="c-line"><span class="c-lbl">Location</span><span class="c-val">Aarhus, Denmark</span></div>
+        <div class="c-line"><span class="c-lbl">Open to</span><span class="c-val">Full-time · Freelance · Advisory</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     EXPERIENCE
+══════════════════════════════ -->
+<div class="page" id="experience">
+  <div class="wrap">
+    <div class="ph">
+      <span class="ph-lbl">#01 — Experience</span>
+      <h2 class="ph-title">My <em>Experience</em></h2>
+    </div>
+    <div class="exp">
+      <div class="exp-meta"><span class="exp-date">2023 — Present</span><span class="exp-co">Q8</span></div>
+      <div class="exp-role">Q8 service assistant</div>
+      <p class="exp-desc">Part-time job beside of my studies to earn a bit extra money, making me able to do fun activities and travels. Working alone on shifts, main takeaway from this job is the responsibility and decision making that comes with it.</p>
+      <div class="tags"><span class="tag o">Customer service</span><span class="tag o">Independency</span><span class="tag n">Responsibility</span></div>
+    </div>
+    <div class="exp">
+      <div class="exp-meta"><span class="exp-date">2023 — 2024</span><span class="exp-co">GoTutor</span></div>
+      <div class="exp-role">Mentor</div>
+      <p class="exp-desc">Helped High-School students gaining a better understanding of mathematics. Focused on making the learning fun and manageable by drawing parallel to the real-world and splitting problems into smaller segments.</p>
+      <div class="tags"><span class="tag o">Mathematics</span><span class="tag o">Teaching</span><span class="tag n">Problem solving</span></div>
+    </div>
+    <div class="exp">
+      <div class="exp-meta"><span class="exp-date">2022 — 2023</span><span class="exp-co">Intrum</span></div>
+      <div class="exp-role">Front Office Advisor</div>
+      <p class="exp-desc">Assisted customers and clients with advice on debt financial solutions. Achieved customer satisfaction score on 4+ out of 5 and always had top scores in performance reviews.</p>
+      <div class="tags"><span class="tag o">Communication</span><span class="tag o">Advisory</span><span class="tag n">Economics</span></div><span class="tag n">Interpersonal Skills</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     EDUCATION
+══════════════════════════════ -->
+<div class="page" id="education">
+  <div class="wrap">
+    <div class="ph">
+      <span class="ph-lbl">#02 — Education</span>
+      <h2 class="ph-title">My <em>Education</em></h2>
+    </div>
+    <div class="edu-list">
+      <div class="edu-card">
+        <div class="edu-degree">MSc. Mathematics &amp; Economics — Finance</div>
+        <div class="edu-school">Faculty of Natural Sciences — Aarhus University</div>
+        <div class="edu-year">2026 — 2028</div>
+        <p class="edu-detail">Planned Thesis title: "Risk-Aware Forecasting of Heavy-Tailed Time-Series". Exchange semester at The University of Hong Kong (HKU), QS University ranking: 1st in Asia and 11th globally .</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">BSc. Mathematics &amp; Economics</div>
+        <div class="edu-school">Faculty of Natural Sciences — Aarhus University</div>
+        <div class="edu-year">2023 — 2026</div>
+        <p class="edu-detail">Completed courses such as mathematical analysis, statistics, risk, probability and mathematical finance</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">HHX</div>
+        <div class="edu-school">IBC Fredericia-Middelfart</div>
+        <div class="edu-year">2018 — 2021</div>
+        <p class="edu-detail">General High-School courses, enrolled in the "Business &amp; Finance" class.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     PROJECTS
+══════════════════════════════ -->
+<div class="page" id="projects">
+  <div class="wrap">
+    <div class="ph">
+      <span class="ph-lbl">04 — Projects</span>
+      <h2 class="ph-title">My <em>Projects</em></h2>
+    </div>
+    <div class="proj-list">
+      <div class="pc">
+        <div>
+          <div class="pc-cat">Financial Modelling</div>
+          <div class="pc-title">Forecasting Energy Prices — Nitor Case Competition 2026</div>
+          <p class="pc-desc">Created a Machine Learning model to predict ?Texas intraday energy targets? based on a given dataset including features such as weather forecast, wind speed, cloudiness etc.</p>
+        </div>
+        <a href="#" class="pc-link">View →</a>
+      </div>
+      <div class="pc">
+        <div>
+          <div class="pc-cat">Trading Algorithm</div>
+          <div class="pc-title">Pairs Trading — Bachelor's Project 2026</div>
+          <p class="pc-desc">*Under construction* - Writing a paper about the theory behind Statistical Pairs Trading, including cointegration, mean reverting stocks and more. Making a Python script with backtesting and simulation the trading strategy performance.</p>
+        </div>
+        <a href="#" class="pc-link">View →</a>
+      </div>
+      <div class="pc">
+        <div>
+          <div class="pc-cat">Optimization</div>
+          <div class="pc-title">Portfolio Optimization - Programming Course 2024</div>
+          <p class="pc-desc">A simple Python script that - given a list of stocks and a risk parameter - (1) plots prices over time, (2) plots PDF of each stock, (3) calculates optimal weights for a portfolio, (4) creates scatterplot of weights with different risk parameters. Worked under the (unrealistic) assumption that stock returns were normally distributed. Grade for project: 12</p>
+        </div>
+        <a href="#" class="pc-link">View →</a>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function go(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById(id).scrollTop = 0;
+  document.getElementById('back').classList.toggle('on', id !== 'home');
+}
+</script>
+</body>
+</html>
