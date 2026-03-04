@@ -32,6 +32,22 @@ body {
 }
 
 /* ── NAV ── */
+.nav-contact {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-contact a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.85rem;
+}
+
+.nav-contact a:hover {
+  opacity: 0.7;
+}
+
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   height: 52px;
@@ -74,6 +90,7 @@ body {
   display: none; position: fixed; inset: 0;
   padding-top: 52px; overflow-y: auto;
   background: var(--bg);
+  overflow-x: hidden;
 }
 .page.active { display: block; animation: up 0.28s ease both; }
 @keyframes up { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
@@ -105,6 +122,22 @@ body {
   font-size: clamp(1rem, 2.2vw, 1.3rem);
   font-weight: 400; font-style: italic;
   color: var(--muted);
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-avatar {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--navy);
 }
 
 /* Divider */
@@ -261,6 +294,124 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
+#portfolio-opt img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── PORTFOLIO OPT PAGE STYLES ── */
+#portfolio-opt .proj-label {
+  font-family: var(--fm); font-size: 0.62rem;
+  color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 16px; display: block;
+}
+#portfolio-opt .proj-title {
+  font-family: var(--fh);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 900; line-height: 1.05;
+  color: var(--navy); margin-bottom: 20px;
+}
+#portfolio-opt .proj-subtitle {
+  font-size: 1.05rem; line-height: 1.7; color: var(--muted);
+  max-width: 560px; margin-bottom: 36px;
+}
+#portfolio-opt .tag-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 52px;
+}
+#portfolio-opt .ptag {
+  font-family: var(--fm); font-size: 0.62rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--white); color: var(--muted);
+}
+#portfolio-opt .ptag.hi { background: var(--navy); color: var(--white); border-color: var(--navy); }
+#portfolio-opt .section { margin-bottom: 52px; }
+#portfolio-opt .section-label {
+  font-family: var(--fm); font-size: 0.6rem;
+  color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 16px; display: block;
+}
+#portfolio-opt .section-title {
+  font-family: var(--fh); font-size: 1.55rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 14px; line-height: 1.2;
+}
+#portfolio-opt .body-text {
+  font-size: 0.95rem; line-height: 1.8; color: var(--text);
+  margin-bottom: 14px;
+}
+#portfolio-opt .formula-card {
+  background: var(--navy); color: var(--white);
+  border-radius: 12px; padding: 28px 32px; margin: 28px 0;
+}
+#portfolio-opt .formula-card .flabel {
+  font-family: var(--fm); font-size: 0.58rem;
+  color: var(--orange); letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+#portfolio-opt .formula {
+  font-family: var(--fm); font-size: 0.95rem; line-height: 2.2;
+  color: #e8e6e0;
+}
+#portfolio-opt .formula em { color: var(--orange); font-style: normal; }
+#portfolio-opt .steps { margin: 20px 0; }
+#portfolio-opt .step {
+  display: flex; gap: 20px; padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+#portfolio-opt .step:last-child { border-bottom: none; }
+#portfolio-opt .step-num {
+  font-family: var(--fh); font-size: 1.4rem; font-weight: 900;
+  color: var(--orange); flex-shrink: 0; line-height: 1; padding-top: 2px;
+  min-width: 28px;
+}
+#portfolio-opt .step-title {
+  font-weight: 500; font-size: 0.95rem; margin-bottom: 4px; color: var(--navy);
+}
+#portfolio-opt .step-desc {
+  font-size: 0.88rem; line-height: 1.7; color: var(--muted); margin-bottom: 4px;
+}
+#portfolio-opt .plot-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 14px; margin: 24px 0;
+}
+#portfolio-opt .plot-item {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+#portfolio-opt .plot-item:hover {
+  box-shadow: 0 6px 24px rgba(13,31,60,0.1);
+  transform: translateY(-2px);
+}
+#portfolio-opt .plot-num {
+  font-family: var(--fm); font-size: 0.58rem;
+  color: var(--orange); letter-spacing: 0.15em; margin-bottom: 8px;
+}
+#portfolio-opt .plot-title {
+  font-family: var(--fh); font-size: 1rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 6px;
+}
+#portfolio-opt .opt-wrap {
+  max-width: 780px; margin: 0 auto;
+  padding: 88px 56px 120px;
+  animation: up 0.3s ease both;
+}
+#portfolio-opt .opt-divider {
+  height: 1px; background: var(--border); margin-bottom: 52px;
+}
+#portfolio-opt footer {
+  border-top: 1px solid var(--border);
+  margin-top: 80px; padding-top: 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+#portfolio-opt .foot-label {
+  font-family: var(--fm); font-size: 0.6rem;
+  color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
+}
+
 /* responsive */
 @media (max-width: 680px) {
   .nav, .back { padding-left: 24px; padding-right: 24px; }
@@ -269,6 +420,7 @@ body {
   #home .wrap, .wrap { padding: 56px 24px 80px; }
   .stats, .skills-cols { grid-template-columns: 1fr; }
   .pc { flex-direction: column; }
+  #portfolio-opt .opt-wrap { padding: 80px 24px 80px; }
 }
 </style>
 </head>
@@ -277,6 +429,11 @@ body {
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-logo"><span>.</span>Mikkel Engelbæk</div>
+  <div class="nav-contact">
+    <a href="tel:+4528764476">📞 +45 28 76 44 76</a>
+    <a href="mailto:mikkel.engelbaek@gmail.com">✉️ mikkel.engelbaek@gmail.com</a>
+    <a href="https://linkedin.com/in/mikkelengelbaek" target="_blank">💼 LinkedIn</a>
+  </div>
   <div class="nav-status">Open to opportunities</div>
 </nav>
 
@@ -289,16 +446,21 @@ body {
   <div class="wrap">
 
     <!-- Hero -->
-    <span class="hero-label">Portfolio · 2026</span>
+    <span class="hero-label">CV · 2026</span>
+<div class="hero-top">
+  <div>
     <h1 class="hero-name"><em>.</em>Mikkel<br>Engelbæk</h1>
     <p class="hero-role">BSc. Mathematics &amp; Economics, Aarhus University</p>
+  </div>
+  <img src="pf1.png" alt="Mikkel Engelbæk" class="hero-avatar">
+</div>
 
     <div class="divider"></div>
 
     <!-- About -->
     <div class="about-text">
-      <p>Student with a genuine passion for the intersection of data, strategy, and quantitative trading.</p>
-      <p>Almost three years of learning across mathematics, modelling, and statistics — ability to translate complex problems into simpler solutions.</p>
+      <p>Student with a passion for the intersection of data, strategy, and quantitative trading.</p>
+      <p>Almost three years of learning across mathematics, probability and statistics — ability to translate complex problems into simpler solutions.</p>
     </div>
 
     <!-- Stats -->
@@ -336,7 +498,7 @@ body {
 
     <!-- Skills -->
     <h2 class="home-section-title">My <em>Toolkit</em></h2>
-<p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 32px; margin-top: -8px; font-style: italic;">Self-assessed — scores reflect a combination of academic grades, project experience, and comparison to professional standards.</p>
+    <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 32px; margin-top: -8px; font-style: italic;">Self-assessed — scores reflect a combination of academic grades, project experience, and comparison to professional standards.</p>
     <div class="skills-cols">
       <div>
         <div class="sg-name">Finance</div>
@@ -365,7 +527,12 @@ body {
     <h2 class="home-section-title">Get in <em>Touch</em></h2>
     <div class="contact-block">
       <div class="c-lines">
-        <div class="c-line"><span class="c-lbl">Email</span><span class="c-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91fcf8fafaf4fdbff4fff6f4fdf3f0f4fad1f6fcf0f8fdbff2fefc">[email&#160;protected]</a></span></div>
+        <div class="c-line">
+          <span class="c-lbl">Email</span>
+          <span class="c-val">
+            <a href="mailto:mikkel.engelbaek@gmail.com" style="color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--border);">mikkel.engelbaek@gmail.com</a>
+          </span>
+        </div>
         <div class="c-line"><span class="c-lbl">LinkedIn</span><span class="c-val"><a href="https://linkedin.com/in/mikkelengelbaek" target="_blank" style="color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--border);">linkedin.com/in/mikkelengelbaek</a></span></div>
         <div class="c-line"><span class="c-lbl">Location</span><span class="c-val">Aarhus, Denmark</span></div>
         <div class="c-line"><span class="c-lbl">Open to</span><span class="c-val">Full-time · Part-time</span></div>
@@ -387,7 +554,7 @@ body {
     <div class="exp">
       <div class="exp-meta"><span class="exp-date">2023 — Present</span><span class="exp-co">Q8</span></div>
       <div class="exp-role">Q8 service assistant</div>
-      <p class="exp-desc">Part-time job beside of my studies to earn a bit extra money, making me able to do fun activities and travels. Working alone on shifts, main takeaway from this job is the responsibility and decision making that comes with it.</p>
+      <p class="exp-desc">Part-time job beside of my studies to earn a bit extra money, making me able to do fun activities and travels. Working alone on shifts, main takeaway from this job is the responsibility and independent decision making that comes with it.</p>
       <div class="tags"><span class="tag o">Customer service</span><span class="tag o">Independency</span><span class="tag n">Responsibility</span></div>
     </div>
     <div class="exp">
@@ -400,7 +567,7 @@ body {
       <div class="exp-meta"><span class="exp-date">2022 — 2023</span><span class="exp-co">Intrum</span></div>
       <div class="exp-role">Front Office Advisor</div>
       <p class="exp-desc">Assisted customers and clients with advice on debt financial solutions. Achieved customer satisfaction score on 4+ out of 5 and always had top scores in performance reviews.</p>
-      <div class="tags"><span class="tag o">Communication</span><span class="tag o">Advisory</span><span class="tag n">Economics</span></div><span class="tag n">Interpersonal Skills</span></div>
+      <div class="tags"><span class="tag o">Communication</span><span class="tag o">Advisory</span><span class="tag n">Economics</span><span class="tag n">Interpersonal Skills</span></div>
     </div>
   </div>
 </div>
@@ -416,16 +583,16 @@ body {
     </div>
     <div class="edu-list">
       <div class="edu-card">
-        <div class="edu-degree">MSc. Mathematics &amp; Economics — Finance</div>
+        <div class="edu-degree">(Planned) MSc. Mathematics &amp; Economics — Finance</div>
         <div class="edu-school">Faculty of Natural Sciences — Aarhus University</div>
         <div class="edu-year">2026 — 2028</div>
-        <p class="edu-detail">Planned Thesis title: "Risk-Aware Forecasting of Heavy-Tailed Time-Series". Exchange semester at The University of Hong Kong (HKU), QS University ranking: 1st in Asia and 11th globally .</p>
+        <p class="edu-detail">Planned Thesis title: "Risk-Aware Forecasting of Heavy-Tailed Time-Series". Exchange semester at The University of Hong Kong (HKU), QS ranks: #1 Asia and #11 globally.</p>
       </div>
       <div class="edu-card">
         <div class="edu-degree">BSc. Mathematics &amp; Economics</div>
         <div class="edu-school">Faculty of Natural Sciences — Aarhus University</div>
         <div class="edu-year">2023 — 2026</div>
-        <p class="edu-detail">Completed courses such as mathematical analysis, statistics, risk, probability and mathematical finance</p>
+        <p class="edu-detail">Completed courses such as mathematical analysis, statistics, probability, mathematical finance and more.</p>
       </div>
       <div class="edu-card">
         <div class="edu-degree">HHX</div>
@@ -458,32 +625,34 @@ body {
       <div class="pc">
         <div>
           <div class="pc-cat">Trading Algorithm</div>
-          <div class="pc-title">Pairs Trading — Bachelor's Project 2026</div>
-          <p class="pc-desc">Writing a paper about the theory behind Statistical Pairs Trading, including cointegration, mean reverting stocks and more. Making a Python script with backtesting and simulation the trading strategy performance. *Still under construction* </p>
+          <div class="pc-title">(Currently writing) Pairs Trading — Bachelor's Project 2026</div>
+          <p class="pc-desc">A paper about the theory behind Statistical Pairs Trading, including cointegration, mean reverting stocks and more. Making a Python/R script with backtesting and simulation the trading strategy performance.</p>
         </div>
-        <a href="#" class="pc-link">View →</a>
+        <a href="#" class="pc-link">Not finished yet →</a>
       </div>
       <div class="pc">
         <div>
           <div class="pc-cat">Optimization</div>
-          <div class="pc-title">Portfolio Optimization - Programming Course 2024</div>
+          <div class="pc-title">Portfolio Optimization - Programming Course 2025</div>
           <p class="pc-desc">A simple Python script that - given a list of stocks and a risk parameter - (1) plots prices over time, (2) plots PDF of each stock, (3) calculates optimal weights for a portfolio, (4) creates scatterplot of weights with different risk parameters. Worked under the (unrealistic) assumption that stock returns were normally distributed. Grade for project: 12</p>
         </div>
         <a href="#" class="pc-link" onclick="go('portfolio-opt');return false;">View →</a>
-      </div>
       </div>
     </div>
   </div>
 </div>
 
 
+<!-- ══════════════════════════════
+     NITOR
+══════════════════════════════ -->
 <div class="page" id="nitor">
   <div style="background: var(--bg); min-height: 100%; font-family: var(--fb);">
     <div style="background: var(--navy); padding: 48px 56px 40px;">
       <div style="max-width: 780px; margin: 0 auto;">
         <div style="font-family: var(--fm); font-size: 0.62rem; color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">🏆 Nitor Energy Case Competition 2026</div>
         <h1 style="font-family: var(--fh); font-size: clamp(1.8rem,5vw,2.8rem); font-weight: 900; color: white; line-height: 1.1; margin-bottom: 12px;">Forecasting Intraday<br><em style="color:var(--orange);font-style:italic;">Energy Price Spreads</em></h1>
-        <p style="font-family: var(--fh); font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.5); margin-bottom: 24px;">Delta Dynamics — Mikkel Engelbæk &amp Edis Møller Holm</p>
+        <p style="font-family: var(--fh); font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.5); margin-bottom: 24px;">Delta Dynamics — Mikkel Engelbæk &amp; Edis Møller Holm</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px;">
           <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(232,82,10,0.2);color:var(--orange);border:1px solid rgba(232,82,10,0.3);">🏆 Finalist</span>
           <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);">Top 8 of ~48 teams</span>
@@ -499,8 +668,8 @@ body {
       <div id="n-intro" style="margin-bottom:56px;">
         <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">01 — Introduction</span>
         <h2 style="font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:20px;">The <em style="color:var(--orange);font-style:italic;">Problem</em></h2>
-        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:14px;">Before anything, I'd like to say that AI was used for this project. It was used for inspiration of approaches, ideas and coding. This project was made as part of the <strong style="color:var(--navy);font-weight:500;">Nitor Energy Case Competition 2026</strong>, where our team <em>Delta Dynamics</em> competed against approximately 50 teams from all over the world. We finished as finalists — top 8 globally.</p>
-        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:14px;">The task was to <strong style="color:var(--navy);font-weight:500;">predict unknown targets</strong> — which revealed themselves to be <strong style="color:var(--navy);font-weight:500;">intraday price spreads</strong> in the Texas power market (<strong style="color:var(--navy);font-weight:500;">ERCOT</strong>) — from a training dataset containing features such as weather conditions, temporal signals, and load forecasts.</p>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:14px;">Before anything, I'd like to say that AI was used for this project. It was used for inspiration of approaches, ideas and coding. This project was made as part of the <strong style="color:var(--navy);font-weight:500;">Nitor Energy Case Competition 2026</strong>, where our team <em>Delta Dynamics</em> competed against approximately 50 teams from all over the world. We finished as finalists — among the top 8 teams.</p>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:14px;">The task was to predict unknown targets — which revealed themselves to be intraday price spreads in the Texas power market (<strong style="color:var(--navy);font-weight:500;">ERCOT</strong>) — from a training dataset containing features such as weather conditions, temporal signals, and load forecasts.</p>
         <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:14px;">We did this by using an XGBoost model and by performing feature engineering and data cleaning.</p>
       </div>
 
@@ -512,11 +681,10 @@ body {
         <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:20px;">We discovered that the training dataset included some very large outliers. In order to train the model to a general market we removed the 1% highest target observations. We also discovered, that the timestamps were given as strings on the form "2023-01-01 00:00:00" which the XGBoost cannot really handle. We decomposed <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">delivery_start</code> into multiple new variables such as, cyclical encodings, peak hour flags, hour of day, day of week and more. Another feature added was the lag-1 which showed the (predicted) target from 1 hour ago.</p>
         <div style="background:#1e2d47;border-radius:10px;padding:24px 28px;margin:20px 0;overflow-x:auto;">
 <pre style="font-family:var(--fm);font-size:0.82rem;color:#e2e8f0;line-height:1.75;margin:0;white-space:pre;">
-  
 <span style="color:#64748b"># Removing top 1% target observations</span>
-train &lt;- read.csv("train.csv", stringsAsFactors = FALSE) 
-train &lt;- train[train$target &lt; 300, ] 
-  
+train &lt;- read.csv("train.csv", stringsAsFactors = FALSE)
+train &lt;- train[train$target &lt; 300, ]
+
 <span style="color:#64748b"># Cyclical encodings — preserves circular structure of time</span>
 df$hour_sin &lt;- sin(2 * pi * df$hour / 24)
 df$hour_cos &lt;- cos(2 * pi * df$hour / 24)
@@ -527,7 +695,7 @@ df$is_peak_hour &lt;- as.integer(df$hour &gt;= 7 &amp; df$hour &lt;= 20)
 <span style="color:#64748b"># Lag-1: previous period target value</span>
 train$lag1[idx] &lt;- c(NA, train$target[idx[-length(idx)]])</pre>
         </div>
-        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:8px;"><strong style="color:var(--navy);font-weight:500;">Why clipping?</strong> Based on another XGBoost model, we predicted the probability of being an extreme outlier. Across the test set, predicted outlier probabilities were consistently low. </p>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:8px;"><strong style="color:var(--navy);font-weight:500;">Why clipping?</strong> Based on another XGBoost model, we predicted the probability of being an extreme outlier. Across the test set, predicted outlier probabilities were consistently low.</p>
         <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:8px;"><strong style="color:var(--navy);font-weight:500;">Why cyclical encodings?</strong> A plain integer hour treats 23 and 0 as far apart — but they are adjacent. Sin/cos encoding preserves this circular structure.</p>
         <p style="font-weight:300;color:#3a3a4a;line-height:1.85;"><strong style="color:var(--navy);font-weight:500;">Why a lag feature?</strong> We assume that energy prices are autocorrelated — the current price is strongly correlated with the previous period. The lag-1 feature lets the model exploit this directly.</p>
       </div>
@@ -537,7 +705,7 @@ train$lag1[idx] &lt;- c(NA, train$target[idx[-length(idx)]])</pre>
       <div id="n-model" style="margin-bottom:56px;">
         <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">03 — Model Training</span>
         <h2 style="font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:20px;">XGBoost <em style="color:var(--orange);font-style:italic;">Configuration</em></h2>
-        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:20px;">We used a <strong style="color:var(--navy);font-weight:500;">chronological 80/20 train/validation split</strong> — a random split would leak future data into training, which is realistic when predicting future price spreads. The following configuration of the XGBoost model was made by AI as Machine Learning is still an area we have to learn more about.</p>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:20px;">We used a chronological 80/20 train/validation split — a random split would leak future data into training, which is realistic when predicting future price spreads. The following configuration of the XGBoost model was made by AI as Machine Learning is still an area we have to learn more about.</p>
         <div style="background:#1e2d47;border-radius:10px;padding:24px 28px;margin:20px 0;overflow-x:auto;">
 <pre style="font-family:var(--fm);font-size:0.82rem;color:#e2e8f0;line-height:1.75;margin:0;white-space:pre;">params &lt;- list(
   objective        = "reg:squarederror",
@@ -592,19 +760,16 @@ model &lt;- xgb.train(params, dtrain, nrounds=5000,
       <div id="n-explore" style="margin-bottom:56px;">
         <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">05 — Data Exploration &amp; Modelling Decisions</span>
         <h2 style="font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:20px;">Decisions Behind the <em style="color:var(--orange);font-style:italic;">Model Design</em></h2>
-
         <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:24px;">Perhaps this should have been one of the first sections of explaining this projects. For our modelling approach we analysed the data by creating different plot and came up with the following thoughts:</p>
-
         <div style="background:var(--white);border-radius:12px;padding:24px 28px;margin-bottom:16px;border-left:3px solid var(--orange);">
           <h4 style="font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px;">One Global Model vs. Per-Market Models</h4>
-          <p style="font-weight:300;color:#3a3a4a;line-height:1.85;">The dataset contained six distinct markets (A–F), which initially suggested training a separate model for each. However, analysis revealed <strong style="color:var(--navy);font-weight:500;">strong correlations across markets</strong> — price movements tended to co-move, indicating shared underlying drivers such as weather and grid load. This justified consolidating into a single <strong style="color:var(--navy);font-weight:500;">global model</strong>, which also had the practical benefit of training on a larger, richer dataset.</p>
+          <p style="font-weight:300;color:#3a3a4a;line-height:1.85;">The dataset contained six distinct markets (A–F), which initially suggested training a separate model for each. However, analysis revealed correlations across markets — price movements tended to co-move, indicating shared underlying drivers such as weather and grid load. This justified consolidating into a single global model, which also had the practical benefit of training on a larger, richer dataset.</p>
         </div>
-
         <div style="background:var(--white);border-radius:12px;padding:24px 28px;margin-bottom:24px;border-left:3px solid var(--navy);">
           <h4 style="font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px;">Visualisations That Shaped Our Thinking</h4>
-          <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:10px;">We produced a range of exploratory plots early in the process — including <strong style="color:var(--navy);font-weight:500;">boxplots, heatmaps, and target-over-time charts</strong>. These gave us an intuitive understanding of the data's structure and directly informed several decisions:</p>
+          <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:10px;">We produced a range of exploratory plots early in the process — including boxplots, heatmaps, and target-over-time charts. These gave us an intuitive understanding of the data's structure and directly informed several decisions:</p>
           <ul style="margin-left:18px;">
-            <li style="font-size:0.9rem;font-weight:300;color:#3a3a4a;line-height:1.8;margin-bottom:6px;">Boxplots revealed the presence of extreme outliers, motivating the <strong style="color:var(--navy);font-weight:500;">top-1% clipping</strong> strategy.</li>
+            <li style="font-size:0.9rem;font-weight:300;color:#3a3a4a;line-height:1.8;margin-bottom:6px;">Boxplots revealed the presence of extreme outliers, motivating the top-1% clipping strategy.</li>
             <li style="font-size:0.9rem;font-weight:300;color:#3a3a4a;line-height:1.8;margin-bottom:6px;">Heatmaps confirmed the cross-market correlations that supported the global model decision.</li>
           </ul>
         </div>
@@ -612,9 +777,8 @@ model &lt;- xgb.train(params, dtrain, nrounds=5000,
 
       <hr style="border:none;border-top:1px solid var(--border);margin:40px 0;">
 
-
       <div id="n-reflect" style="margin-bottom:56px;">
-        <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">05 — Reflection</span>
+        <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">06 — Reflection</span>
         <h2 style="font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:20px;">What I <em style="color:var(--orange);font-style:italic;">Learned</em></h2>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;">
           <div style="background:var(--white);border-radius:10px;padding:22px 24px;border-top:3px solid #10b981;">
@@ -631,7 +795,8 @@ model &lt;- xgb.train(params, dtrain, nrounds=5000,
             <ul style="margin-left:16px;">
               <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Investigate for noisy features</li>
               <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Try LightGBM</li>
-              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Combine with multiple models. For example, one for predicting general market, uncertain market, and "spike" market.</li>
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Combine with multiple models. For example, one for predicting general market, uncertain market, and "spike" market</li>
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Account for inflation in the training data</li>
             </ul>
           </div>
         </div>
@@ -642,7 +807,7 @@ model &lt;- xgb.train(params, dtrain, nrounds=5000,
           <div style="font-family:var(--fm);font-size:0.6rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px;">Source Code & Data</div>
           <div style="font-size:0.9rem;font-weight:300;color:#3a3a4a;">Full R code, training dataset, and test dataset available on GitHub.</div>
         </div>
-        <a href="YOUR_GITHUB_URL_HERE" target="_blank" style="font-family:var(--fm);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:10px 20px;border-radius:999px;background:var(--navy);color:white;text-decoration:none;border:1px solid var(--navy);transition:background 0.2s;"
+        <a href="https://github.com/MikkelEngelbaek/DeltaDynamics_Nitor_competition" target="_blank" style="font-family:var(--fm);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:10px 20px;border-radius:999px;background:var(--navy);color:white;text-decoration:none;border:1px solid var(--navy);transition:background 0.2s;"
           onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'"
           onmouseout="this.style.background='var(--navy)';this.style.borderColor='var(--navy)'">
           View on GitHub →
@@ -657,134 +822,143 @@ model &lt;- xgb.train(params, dtrain, nrounds=5000,
      PORTFOLIO OPTIMIZATION
 ══════════════════════════════ -->
 <div class="page" id="portfolio-opt">
-  <div style="max-width:780px;margin:0 auto;padding:88px 56px 120px;">
 
-    <span style="font-family:var(--fm);font-size:0.62rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;display:block;">Project II · Spring 2025</span>
-    <h1 style="font-family:var(--fh);font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.05;color:var(--navy);margin-bottom:20px;">Portfolio<br>Optimization</h1>
-    <p style="font-size:1.05rem;line-height:1.7;color:var(--muted);max-width:560px;margin-bottom:36px;">
-      A Python-based tool that downloads real stock data, models return distributions as multivariate Gaussians, and solves a mean-variance optimization problem across varying risk aversion levels.
-    </p>
-
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:52px;">
-      <span style="font-family:var(--fm);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--navy);color:var(--white);border:1px solid var(--navy);">Python</span>
-      <span style="font-family:var(--fm);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--navy);color:var(--white);border:1px solid var(--navy);">Optimization</span>
-      <span style="font-family:var(--fm);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--navy);color:var(--white);border:1px solid var(--navy);">Finance</span>
-      <span style="font-family:var(--fm);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--white);color:var(--muted);">yfinance</span>
-      <span style="font-family:var(--fm);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--white);color:var(--muted);">NumPy</span>
-      <span style="font-family:var(--fm);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--white);color:var(--muted);">SciPy</span>
-      <span style="font-family:var(--fm);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--white);color:var(--muted);">Matplotlib</span>
-      <span style="font-family:var(--fm);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--white);color:var(--muted);">Aarhus University</span>
+    <!-- NAVY HEADER BANNER -->
+    <div style="background: var(--navy); padding: 48px 56px 40px;">
+      <div style="max-width: 780px; margin: 0 auto;">
+        <div style="font-family: var(--fm); font-size: 0.62rem; color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">Project II · Spring 2025</div>
+        <h1 style="font-family: var(--fh); font-size: clamp(1.8rem,5vw,2.8rem); font-weight: 900; color: white; line-height: 1.1; margin-bottom: 12px;">Portfolio<br><em style="color:var(--orange);font-style:italic;">Optimization</em></h1>
+        <p style="font-family: var(--fh); font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.5); margin-bottom: 24px;">Mean-variance optimization · Mikkel Engelbæk</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(232,82,10,0.2);color:var(--orange);border:1px solid rgba(232,82,10,0.3);">Grade: 12</span>
+          <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);">Python</span>
+          <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);">NumPy · SciPy · Matplotlib</span>
+          <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);">Aarhus University</span>
+        </div>
+      </div>
     </div>
 
-    <div style="height:1px;background:var(--border);margin-bottom:52px;"></div>
+  <div class="opt-wrap">
+
+    <div class="opt-divider"></div>
 
     <!-- OVERVIEW -->
-    <div style="margin-bottom:52px;">
-      <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;display:block;">Overview</span>
-      <h2 style="font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.2;">What is the problem?</h2>
-      <p style="font-size:0.95rem;line-height:1.8;color:var(--text);margin-bottom:14px;">
+    <section class="section">
+      <span class="section-label">#01 – Overview</span>
+      <h2 class="section-title">What is the problem?</h2>
+      <p class="body-text">
         Given a set of stocks and their historical prices, the goal is to choose a portfolio — a vector of weights <em>w</em> — that balances expected return against risk. The constraint is that all weights must sum to 1.
       </p>
-      <p style="font-size:0.95rem;line-height:1.8;color:var(--text);margin-bottom:14px;">
+      <p class="body-text">
         Returns are modelled as a multivariate Gaussian, giving us a tractable framework for optimization (this is an unrealistic assumption however, as we observe heavy tails in the real world). The risk aversion parameter γ controls the trade-off: a high γ means we prefer safer portfolios even if it means lower expected returns.
       </p>
-      <div style="background:var(--navy);color:var(--white);border-radius:12px;padding:28px 32px;margin:28px 0;">
-        <div style="font-family:var(--fm);font-size:0.58rem;color:var(--orange);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px;">Optimization Problem</div>
-        <div style="font-family:var(--fm);font-size:0.95rem;line-height:2.2;color:#e8e6e0;">
-          maximize &nbsp;&nbsp; <span style="color:var(--orange);">w</span>ᵀμ − γ · <span style="color:var(--orange);">w</span>ᵀΣ<span style="color:var(--orange);">w</span><br>
-          subject to &nbsp; Σᵢ <span style="color:var(--orange);">wᵢ</span> = 1
+
+      <div class="formula-card">
+        <div class="flabel">Optimization Problem</div>
+        <div class="formula">
+          maximize &nbsp;&nbsp; <em>w</em>ᵀμ − γ · <em>w</em>ᵀΣ<em>w</em><br>
+          subject to &nbsp; Σᵢ <em>wᵢ</em> = 1
         </div>
       </div>
-      <p style="font-size:0.95rem;line-height:1.8;color:var(--text);">
+
+      <p class="body-text">
         Where <strong>μ</strong> is the estimated mean return vector, <strong>Σ</strong> is the estimated covariance matrix of returns, and <strong>γ</strong> is the risk aversion parameter.
       </p>
-    </div>
+    </section>
 
-    <!-- METHODOLOGY -->
-    <div style="margin-bottom:52px;">
-      <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;display:block;">Methodology</span>
-      <h2 style="font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.2;">How it works</h2>
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <span class="section-label">#02 – Methodology</span>
+      <h2 class="section-title">How it works</h2>
 
-      <div style="margin:20px 0;">
-        <div style="display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--border);">
-          <span style="font-family:var(--fh);font-size:1.4rem;font-weight:900;color:var(--orange);flex-shrink:0;line-height:1;padding-top:2px;min-width:28px;">1</span>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
           <div>
-            <div style="font-weight:500;font-size:0.95rem;margin-bottom:4px;color:var(--navy);">Fetch real stock data</div>
-            <div style="font-size:0.88rem;line-height:1.7;color:var(--muted);">The <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">get_prices()</code> function downloads the opening prices for a number of stocks over a given time-period using <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">yfinance</code>.</div>
+            <div class="step-title">Fetch real stock data</div>
+            <div class="step-desc">The <code>get_prices()</code> function downloads the opening prices for a number of stocks over a given time-period using <code>yfinance</code>.</div>
           </div>
         </div>
-        <div style="display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--border);">
-          <span style="font-family:var(--fh);font-size:1.4rem;font-weight:900;color:var(--orange);flex-shrink:0;line-height:1;padding-top:2px;min-width:28px;">2</span>
+        <div class="step">
+          <span class="step-num">2</span>
           <div>
-            <div style="font-weight:500;font-size:0.95rem;margin-bottom:4px;color:var(--navy);">Compute returns, μ and Σ</div>
-            <div style="font-size:0.88rem;line-height:1.7;color:var(--muted);">
-              The returns for stock <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">i</code> at time <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">j</code> are computed as <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">r<sub>j,i</sub> = (p<sub>j+1,i</sub> − p<sub>j,i</sub>) / p<sub>j,i</sub></code>. The mean return vector is estimated as <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">μ ≃ 1/n · ∑<sub>j=1..n</sub> r<sub>j</sub></code> and the covariance matrix as <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">Σ ≃ 1/n · ∑<sub>j=1..n</sub> (r<sub>j</sub> − μ)(r<sub>j</sub> − μ)<sup>T</sup></code>, both using formulas given in the original problem description.
-            </div>
+            <div class="step-title">Compute returns, μ and Σ</div>
+            <div class="step-desc">The returns for stock <code>i</code> at time <code>j</code> are computed as <code>r<sub>j,i</sub> = (p<sub>j+1,i</sub> − p<sub>j,i</sub>) / p<sub>j,i</sub></code>.</div>
+            <div class="step-desc">The mean return vector is estimated as <code>μ ≃ 1/n · ∑<sub>j=1..n</sub> r<sub>j</sub></code>.</div>
+            <div class="step-desc">The covariance matrix is estimated as <code>Σ ≃ 1/n · ∑<sub>j=1..n</sub> (r<sub>j</sub> − μ)(r<sub>j</sub> − μ)<sup>T</sup></code>.</div>
           </div>
         </div>
-        <div style="display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--border);">
-          <span style="font-family:var(--fh);font-size:1.4rem;font-weight:900;color:var(--orange);flex-shrink:0;line-height:1;padding-top:2px;min-width:28px;">3</span>
+        <div class="step">
+          <span class="step-num">3</span>
           <div>
-            <div style="font-weight:500;font-size:0.95rem;margin-bottom:4px;color:var(--navy);">Solve the optimization problem</div>
-            <div style="font-size:0.88rem;line-height:1.7;color:var(--muted);">The <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">solutions()</code> function then solves the optimization problem by using the module <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">scipy.optimize.minimize</code> and returns the optimal weights <em>w*</em> that maximizes the return given the risk aversion parameter γ.</div>
+            <div class="step-title">Solve the optimization problem</div>
+            <div class="step-desc">The <code>solutions()</code> function then solves the optimization problem by using the module <code>scipy.optimize.minimize</code> and returns the optimal weights <em>w*</em> that maximizes the return given the risk aversion parameter γ.</div>
           </div>
         </div>
-        <div style="display:flex;gap:20px;padding:18px 0;">
-          <span style="font-family:var(--fh);font-size:1.4rem;font-weight:900;color:var(--orange);flex-shrink:0;line-height:1;padding-top:2px;min-width:28px;">4</span>
+        <div class="step">
+          <span class="step-num">4</span>
           <div>
-            <div style="font-weight:500;font-size:0.95rem;margin-bottom:4px;color:var(--navy);">Visualize all results</div>
-            <div style="font-size:0.88rem;line-height:1.7;color:var(--muted);">Four plots are generated: Opening prices over time for each stock, PDF returns for each stock, PDF returns for portfolios with different γ's, and a scatter plot over changes in weights for different γ's.</div>
+            <div class="step-title">Visualize all results</div>
+            <div class="step-desc">Four plots are generated: Opening prices over time for each stock, PDF returns for each stock, PDF returns for portfolios with different γ's, and a scatter plot over changes in weights for different γ's.</div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- OUTPUT -->
-    <div style="margin-bottom:52px;">
-      <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;display:block;">Output</span>
-      <h2 style="font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.2;">The four plots</h2>
-      <div style="display:grid;grid-template-columns:1fr;gap:14px;margin:24px 0;">
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;">
-          <div style="font-family:var(--fm);font-size:0.58rem;color:var(--orange);letter-spacing:0.15em;margin-bottom:8px;">Plot 01</div>
-          <div style="font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px;">Opening Prices Over Time</div>
-          <img src="plot1.png" alt="Opening prices over time" style="width:100%;border-radius:6px;margin-top:10px;">
+    <section class="section">
+      <span class="section-label">#03 – Output</span>
+      <h2 class="section-title">The four plots for 5 given stocks</h2>
+      <div class="plot-grid">
+        <div class="plot-item">
+          <div class="plot-num">Plot 01</div>
+          <div class="plot-title">Opening Prices Over Time</div>
+          <img src="plot1.png" alt="Opening prices over time" style="width:100%; border-radius:6px; margin-top:10px;">
         </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;">
-          <div style="font-family:var(--fm);font-size:0.58rem;color:var(--orange);letter-spacing:0.15em;margin-bottom:8px;">Plot 02</div>
-          <div style="font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px;">Return PDFs per Stock</div>
-          <img src="plot2.png" alt="Return PDFs per stock" style="width:100%;border-radius:6px;margin-top:10px;">
+        <div class="plot-item">
+          <div class="plot-num">Plot 02</div>
+          <div class="plot-title">Return PDFs per Stock</div>
+          <img src="plot2.png" alt="Return PDFs per stock" style="width:100%; border-radius:6px; margin-top:10px;">
         </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;">
-          <div style="font-family:var(--fm);font-size:0.58rem;color:var(--orange);letter-spacing:0.15em;margin-bottom:8px;">Plot 03</div>
-          <div style="font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px;">Portfolio Return PDFs per γ</div>
-          <img src="plot3.png" alt="Portfolio return PDFs" style="width:100%;border-radius:6px;margin-top:10px;">
+        <div class="plot-item">
+          <div class="plot-num">Plot 03</div>
+          <div class="plot-title">Portfolio Return PDFs per γ</div>
+          <img src="plot3.png" alt="Portfolio return PDFs" style="width:100%; border-radius:6px; margin-top:10px;">
         </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;">
-          <div style="font-family:var(--fm);font-size:0.58rem;color:var(--orange);letter-spacing:0.15em;margin-bottom:8px;">Plot 04</div>
-          <div style="font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px;">Weight Scatter vs γ</div>
-          <img src="plot4.png" alt="Weight scatter vs gamma" style="width:100%;border-radius:6px;margin-top:10px;">
+        <div class="plot-item">
+          <div class="plot-num">Plot 04</div>
+          <div class="plot-title">Weight Scatter vs γ</div>
+          <img src="plot4.png" alt="Weight scatter vs gamma" style="width:100%; border-radius:6px; margin-top:10px;">
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- REFLECTION -->
-    <div style="margin-bottom:52px;">
-      <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;display:block;">Reflection</span>
-      <h2 style="font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.2;">Challenges and takeaways</h2>
-      <p style="font-size:0.95rem;line-height:1.8;color:var(--text);margin-bottom:14px;">
-        This project was made as part of my final assessment for <em>Introduction to Programming</em>. While the assignment was manageable, I still ran into challenges — both on the coding side and in following PEP8 rules. One early problem was fetching stock data: I tried using <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">pandas-datareader</code> which gave me unexpected trouble, so I switched to <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">yfinance</code>, which turned out to be simpler and more reliable.
+    <section class="section">
+      <span class="section-label">#04 – Reflection</span>
+      <h2 class="section-title">Challenges and takeaways </h2>
+      <p class="body-text">
+        This project was made as part of my final assessment for <em>Introduction to Programming</em>. While the assignment was manageable, I still ran into challenges — both on the coding side and in following PEP8 rules. One early problem was fetching stock data: I tried using <code>pandas-datareader</code> which gave me unexpected trouble, so I switched to <code>yfinance</code>, which turned out to be simpler and more reliable.
       </p>
-      <p style="font-size:0.95rem;line-height:1.8;color:var(--text);margin-bottom:14px;">
-        A non-obvious bug came up when computing the covariance matrix: transposing with <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">r[j].T</code> had <strong>no effect</strong>. I found out that it was because <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">r[j]</code> is a 1D array in NumPy — and using <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">.T</code> on a 1D array does nothing. The fix was to use <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">.reshape(-1, 1)</code> to explicitly promote it to a column vector, making the outer product <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">(r[j] − μ) @ (r[j] − μ).T</code> produce the correct matrix.
+      <p class="body-text">
+        A non-obvious bug came up when computing the covariance matrix: transposing with <code>r[j].T</code> had <strong>no effect</strong>. I found out that it was because <code>r[j]</code> is a 1D array in NumPy — and using <code>.T</code> on a 1D array does nothing. The fix was to use <code>.reshape(-1, 1)</code> to explicitly promote it to a column vector, making the outer product <code>(r[j] − μ) @ (r[j] − μ).T</code> produce the correct matrix.
       </p>
-      <p style="font-size:0.95rem;line-height:1.8;color:var(--text);">
-        Another limitation is <strong>mixed currency</strong>: a portfolio combined of international stocks makes the price history plot misleading — prices are compared directly without exchange rate normalization, something <code style="font-family:var(--fm);font-size:0.82em;background:rgba(13,31,60,0.07);color:var(--navy);padding:2px 6px;border-radius:4px;">yfinance</code> doesn't handle and would take extra effort to account for.
+      <p class="body-text">
+        Another limitation is <strong>mixed currency</strong>: a portfolio combined of international stocks makes the price history plot misleading — prices are compared directly without exchange rate normalization, something <code>yfinance</code> doesn't handle and would take extra effort to account for.
       </p>
-    </div>
+    </section>
 
-    <footer style="border-top:1px solid var(--border);margin-top:80px;padding-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-      <span style="font-family:var(--fm);font-size:0.6rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;">Mikkel Holmslykke Engelbæk</span>
-    </footer>
+    <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-family:var(--fm);font-size:0.6rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px;">Source Code & Data</div>
+        <div style="font-size:0.9rem;font-weight:300;color:#3a3a4a;">Full Python code and problem description available on GitHub.</div>
+      </div>
+      <a href="https://github.com/MikkelEngelbaek/Portfolio_Optimization" target="_blank" style="font-family:var(--fm);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:10px 20px;border-radius:999px;background:var(--navy);color:white;text-decoration:none;border:1px solid var(--navy);transition:background 0.2s;"
+        onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'"
+        onmouseout="this.style.background='var(--navy)';this.style.borderColor='var(--navy)'">
+        View on GitHub →
+      </a>
+    </div>
 
   </div>
 </div>
