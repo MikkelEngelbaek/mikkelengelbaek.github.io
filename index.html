@@ -466,7 +466,7 @@ body {
     <!-- Stats -->
     <div class="stats">
       <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl">Years of Learning Exp.</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Countries studied in (soon!)</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Countries studied in</div></div>
       <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Competitive Mindset</div></div>
     </div>
 
@@ -625,10 +625,10 @@ body {
       <div class="pc">
         <div>
           <div class="pc-cat">Trading Algorithm</div>
-          <div class="pc-title">(Currently writing) Pairs Trading — Bachelor's Project 2026</div>
+          <div class="pc-title">Pairs Trading — Bachelor's Project 2026</div>
           <p class="pc-desc">A paper about the theory behind Statistical Pairs Trading, including cointegration, mean reverting stocks and more. Making a Python/R script with backtesting and simulation the trading strategy performance.</p>
         </div>
-        <a href="#" class="pc-link">Not finished yet →</a>
+        <a href="#" class="pc-link" onclick="go('pairs-trading');return false;">View →</a>
       </div>
       <div class="pc">
         <div>
@@ -826,6 +826,144 @@ model &lt;- xgb.train(params, dtrain, nrounds=5000,
 </div>
 
 <!-- ══════════════════════════════
+     PAIRS TRADING — BACHELOR'S PROJECT
+══════════════════════════════ -->
+<div class="page" id="pairs-trading">
+  <div style="background: var(--bg); min-height: 100%; font-family: var(--fb);">
+
+    <!-- NAVY HEADER BANNER -->
+    <div style="background: var(--navy); padding: 48px 56px 40px;">
+      <div style="max-width: 780px; margin: 0 auto;">
+        <div style="font-family: var(--fm); font-size: 0.62rem; color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">Bachelor's Project · Spring 2026</div>
+        <h1 style="font-family: var(--fh); font-size: clamp(1.8rem,5vw,2.8rem); font-weight: 900; color: white; line-height: 1.1; margin-bottom: 12px;">Pairs Trading:<br><em style="color:var(--orange);font-style:italic;">Theory &amp; Application</em></h1>
+        <p style="font-family: var(--fh); font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.5); margin-bottom: 24px;">BSc. Mathematics &amp; Economics, Aarhus University · Mikkel Engelbæk</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(232,82,10,0.2);color:var(--orange);border:1px solid rgba(232,82,10,0.3);">Cointegration</span>
+          <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);">Python · statsmodels · yfinance</span>
+          <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);">Time Series Analysis</span>
+          <span style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12);">Backtesting</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:780px;margin:0 auto;padding:56px 56px 96px;">
+
+      <!-- 01 INTRODUCTION -->
+      <div id="pt-intro" style="margin-bottom:56px;">
+        <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">01 — Introduction</span>
+        <h2 style="font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:20px;">The <em style="color:var(--orange);font-style:italic;">Idea</em></h2>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:14px;">My bachelor's project explains the theory behind <strong style="color:var(--navy);font-weight:500;">pairs trading by cointegration</strong> and shows a simple application of the strategy. The core idea: find two stocks that historically move together. When they drift apart, go long the one that has fallen behind and short the one that has moved ahead — and profit when the gap closes again.</p>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:14px;">A key advantage is that the strategy is <strong style="color:var(--navy);font-weight:500;">market-neutral</strong>: profits don't depend on whether the overall market goes up or down, only on the relationship between the two stocks.</p>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:40px 0;">
+
+      <!-- 02 THEORY -->
+      <div id="pt-theory" style="margin-bottom:56px;">
+        <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">02 — Theory</span>
+        <h2 style="font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:20px;">Building up <em style="color:var(--orange);font-style:italic;">Cointegration</em></h2>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:14px;">The paper builds the theory from the bottom: starting with <strong style="color:var(--navy);font-weight:500;">weak-sense stationarity</strong> and <strong style="color:var(--navy);font-weight:500;">order of integration</strong>, and proving that two I(1) price processes are cointegrated exactly when a hedged spread between them is stationary — meaning it keeps reverting to its mean:</p>
+        <div style="background:var(--navy);border-radius:12px;padding:28px 32px;margin:24px 0;">
+          <div style="font-family:var(--fm);font-size:0.58rem;color:var(--orange);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px;">Key Result (Theorem 5)</div>
+          <div style="font-family:var(--fm);font-size:0.95rem;line-height:2.2;color:#e8e6e0;">
+            {X<sub>t</sub>} ∼ I(1), {Y<sub>t</sub>} ∼ I(1) cointegrated &nbsp;⇔&nbsp; ∃ β ≠ 0 : &nbsp;<em style="color:var(--orange);font-style:normal;">S<sub>t</sub> = X<sub>t</sub> − βY<sub>t</sub></em> ∼ I(0)
+          </div>
+        </div>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:14px;">An important distinction is <strong style="color:var(--navy);font-weight:500;">correlation vs. cointegration</strong>: correlated stocks have moved together in a sample, but may diverge forever. Cointegration is a stronger, long-run property — the spread can drift apart, but it will converge again.</p>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;">To test this empirically, the paper presents the <strong style="color:var(--navy);font-weight:500;">Augmented Dickey-Fuller test</strong> and combines it into the <strong style="color:var(--navy);font-weight:500;">Engle-Granger procedure</strong>: check that both price series are individually I(1), regress one on the other, and test whether the residuals are stationary.</p>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:40px 0;">
+
+      <!-- 03 STRATEGY -->
+      <div id="pt-strategy" style="margin-bottom:56px;">
+        <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">03 — The Strategy</span>
+        <h2 style="font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:20px;">From Spread to <em style="color:var(--orange);font-style:italic;">Trading Signals</em></h2>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:20px;">The hedge ratio β is estimated by OLS regression, and the spread is standardized into a <strong style="color:var(--navy);font-weight:500;">z-score</strong> measuring how many standard deviations it lies from its mean. We enter a position when the z-score exceeds ±1 and exit when it reverts back to ∓0.5:</p>
+        <div style="background:#1e2d47;border-radius:10px;padding:24px 28px;margin:20px 0;overflow-x:auto;">
+<pre style="font-family:var(--fm);font-size:0.82rem;color:#e2e8f0;line-height:1.75;margin:0;white-space:pre;"><span style="color:#64748b"># Hedge ratio by regression: MSFT = alpha + beta * ADBE + eps</span>
+model  = sm.OLS(MSFT, sm.add_constant(ADBE)).fit()
+beta   = model.params["ADBE"]
+
+<span style="color:#64748b"># Spread and z-score</span>
+SPREAD = MSFT - beta * ADBE
+Z      = (SPREAD - SPREAD.mean()) / SPREAD.std()
+
+<span style="color:#64748b"># Signals: long when z &lt; -1, short when z &gt; 1,</span>
+<span style="color:#64748b"># exit when the z-score reverts towards its mean</span></pre>
+        </div>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;">Applied to <strong style="color:var(--navy);font-weight:500;">Adobe and Microsoft</strong> — a pair that passes the Engle-Granger test on 2013–2017 data — the full backtest engine tracks positions, entries/exits and an equity curve day by day.</p>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:40px 0;">
+
+      <!-- 04 RESULTS -->
+      <div id="pt-results" style="margin-bottom:56px;">
+        <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">04 — Results</span>
+        <h2 style="font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:20px;">Backtest <em style="color:var(--orange);font-style:italic;">Performance</em></h2>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;margin-bottom:20px;">The in-sample result (2013–2017) of <strong style="color:var(--navy);font-weight:500;">+77%</strong> looks great — but it suffers from <strong style="color:var(--navy);font-weight:500;">lookahead bias</strong>: the z-score used a mean and standard deviation estimated on the very data being traded. Fixing this by backtesting out-of-sample (2017–2021) with all parameters frozen from the training period gives a more honest picture:</p>
+        <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:0.88rem;">
+          <thead><tr style="background:var(--navy);color:white;">
+            <th style="padding:11px 14px;text-align:left;font-family:var(--fm);font-size:0.65rem;">Period / Strategy</th>
+            <th style="padding:11px 14px;text-align:left;font-family:var(--fm);font-size:0.65rem;">Return</th>
+            <th style="padding:11px 14px;text-align:left;font-family:var(--fm);font-size:0.65rem;">Note</th>
+          </tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px 14px;font-weight:300;color:#3a3a4a;">In-sample (2013–2017)</td><td style="padding:10px 14px;font-weight:500;color:var(--navy);">+77%</td><td style="padding:10px 14px;font-weight:300;color:#3a3a4a;">Unrealistic — lookahead bias</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(13,31,60,0.03);"><td style="padding:10px 14px;font-weight:300;color:#3a3a4a;">Out-of-sample (2017–2021)</td><td style="padding:10px 14px;font-weight:500;color:#10b981;">≈ +40%</td><td style="padding:10px 14px;font-weight:300;color:#3a3a4a;">Honest backtest, frozen parameters</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px 14px;font-weight:300;color:#3a3a4a;">Buy &amp; hold the spread (2017–2021)</td><td style="padding:10px 14px;font-weight:500;color:var(--orange);">−16.44%</td><td style="padding:10px 14px;font-weight:300;color:#3a3a4a;">Benchmark — returns come from <em>when</em> we trade</td></tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(13,31,60,0.03);"><td style="padding:10px 14px;font-weight:300;color:#3a3a4a;">Extended until today (2017–2026)</td><td style="padding:10px 14px;font-weight:500;color:var(--orange);">−31.57%</td><td style="padding:10px 14px;font-weight:300;color:#3a3a4a;">Cointegration breaks — strategy breaks down</td></tr>
+          </tbody>
+        </table>
+        <p style="font-weight:300;color:#3a3a4a;line-height:1.85;">The last row is the paper's most important lesson: the strategy earns money <em>as long as</em> the cointegration holds. Extending the sample until today, ADBE/MSFT are no longer cointegrated — and the strategy loses money. Pepsi and Coca-Cola show the reverse problem: a pair that intuitively "should" be cointegrated, but empirically isn't.</p>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:40px 0;">
+
+      <!-- 05 REFLECTION -->
+      <div id="pt-reflect" style="margin-bottom:56px;">
+        <span style="font-family:var(--fm);font-size:0.6rem;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block;">05 — Conclusion &amp; Reflection</span>
+        <h2 style="font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:20px;">What I <em style="color:var(--orange);font-style:italic;">Learned</em></h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;">
+          <div style="background:var(--white);border-radius:10px;padding:22px 24px;border-top:3px solid #10b981;">
+            <h4 style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:#10b981;margin-bottom:12px;">Key takeaways</h4>
+            <ul style="margin-left:16px;">
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Cointegration is a stronger property than correlation — and the right foundation for mean-reversion trading</li>
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Lookahead bias can make a strategy look far better than it is — out-of-sample testing is essential</li>
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Beating buy-and-hold of the same spread suggests the returns came from timing, not luck</li>
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;">The hard part isn't trading a cointegrated pair — it's finding one that truly is</li>
+            </ul>
+          </div>
+          <div style="background:var(--white);border-radius:10px;padding:22px 24px;border-top:3px solid var(--orange);">
+            <h4 style="font-family:var(--fm);font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Extensions I'd explore</h4>
+            <ul style="margin-left:16px;">
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Rolling cointegration tests as a stop-loss when the relationship breaks</li>
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Diversifying over multiple cointegrated pairs</li>
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Including transaction and shorting costs</li>
+              <li style="font-size:0.88rem;font-weight:300;color:#3a3a4a;margin-bottom:6px;">Optimizing the entry/exit z-score levels instead of fixed thresholds</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div style="font-family:var(--fm);font-size:0.6rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px;">Full Paper &amp; Source Code</div>
+          <div style="font-size:0.9rem;font-weight:300;color:#3a3a4a;">The full paper (PDF) with proofs and appendices, plus the Python implementation, available on GitHub.</div>
+        </div>
+        <a href="https://github.com/MikkelEngelbaek/Pairs_Trading" target="_blank" style="font-family:var(--fm);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:10px 20px;border-radius:999px;background:var(--navy);color:white;text-decoration:none;border:1px solid var(--navy);transition:background 0.2s;"
+          onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'"
+          onmouseout="this.style.background='var(--navy)';this.style.borderColor='var(--navy)'">
+          View on GitHub →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
      PORTFOLIO OPTIMIZATION
 ══════════════════════════════ -->
 <div class="page" id="portfolio-opt">
@@ -980,10 +1118,7 @@ function go(id) {
     backBtn.classList.remove('on');
   } else {
     backBtn.classList.add('on');
-    if (id === 'nitor') {
-      backBtn.onclick = () => go('projects');
-      backBtn.textContent = '← Back to projects';
-    } else if (id === 'portfolio-opt') {
+    if (id === 'nitor' || id === 'portfolio-opt' || id === 'pairs-trading') {
       backBtn.onclick = () => go('projects');
       backBtn.textContent = '← Back to projects';
     } else {
